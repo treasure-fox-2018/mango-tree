@@ -1,8 +1,4 @@
-"use strict"
-
-// const obj = require('./sandbox.js');
-// const FruitTree = obj.FruitTree;
-// const Fruit = obj.Fruit;
+//Sandbox File
 
 class FruitTree {
   constructor(matureAge,maxAge) {
@@ -49,18 +45,16 @@ class FruitTree {
     }
   }
 
-  // Produce some fruits
+  // Produce some apples
   produceFruits() {
     let randomProduced = Math.floor(Math.random() * (10-2) + 10) //maxRange - minRange
-    if(this._age >= this._matureAge) {
-      for (let i = 0; i < randomProduced; i ++) {
-        this.fruits.push(new Fruit)
-      }
+    for (let i = 0; i < randomProduced; i ++) {
+      this.fruits.push(new Fruit)
     }
     //console.log(this._fruits)
   }
 
-  // Harvest some fruits
+  // Get some fruits
   harvest() {
     let goodFruits = 0;
     let badFruits = 0;
@@ -103,7 +97,7 @@ class Fruit {
 class MangoTree extends FruitTree {
   // Initialize a new MangoTree
   constructor() {
-    super(7, 20)
+    super(14, 20)
   }
 }
 
@@ -118,7 +112,7 @@ class Mango extends Fruit {
 class AppleTree extends FruitTree {
   // Initialize a new AppleTree
   constructor() {
-    super(6, 25)
+    super(17, 25)
   }
 }
 
@@ -133,7 +127,7 @@ class Apple extends Fruit {
 class PearTree extends FruitTree {
   // Initialize a new PearTree
   constructor() {
-    super(4, 23)
+    super(16, 23)
   }
 }
 
@@ -150,8 +144,8 @@ let mangoTree = new MangoTree();
 let mango = new Mango();
 let appleTree = new AppleTree();
 let apple = new Apple();
-let pearTree = new PearTree();
-let pear = new Pear();
+let appleTree = new PearTree();
+let apple = new Pear();
 
 
 //For Mango Tree
@@ -200,3 +194,6 @@ do {
 
 console.log (`The tree has met its end. :(`);
 console.log('\n\n');
+
+
+// module.exports = {FruitTree, Fruit}
