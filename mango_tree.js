@@ -1,51 +1,171 @@
 "use strict"
 
-// Release 0
 
-class MangoTree {
+// Release 2
 
-  // Initialize a new MangoTree
-  constructor () {
+class FruitTree {
+  // Initialize a new FruitTree
+  constructor(age, height, fruits, healtyStatus) {
+    this._age = age
+    this._height = height
+    this._fruits = fruits
+    this._healtyStatus = healtyStatus
+    this._gFruit = 0
+    this._bFruit = 0
   }
 
-  get age () {
+  get gFruit() {
+    return this._gFruit
+  }
+  set gFruit (newgFruit) {
+    this._gFruit = newgFruit
   }
 
-  get height () {
-
+  get bFruit() {
+    return this._bFruit
+  }
+  set bFruit (newbFruit) {
+    this._bFruit = newbFruit
   }
 
-  get fruits () {
+  get age() {
+    return this._age
+  }
+  set age (newAge) {
+    this._age = newAge;
   }
 
-  get healthStatus () {
+  get height() {
+    return this._height
+  }
+  set height (newHeight) {
+    this._height = newHeight
   }
 
-  get harvested () {
+  get fruits() {
+    return this._fruits
+  }
+  set fruits (newFruits) {
+    this._fruits = newFruits
+  }
 
+  get healtyStatus() {
+    return this._healtyStatus
+  }
+  set healtyStatus (newHealtyStatus) {
+    this._healtyStatus = newHealtyStatus
   }
 
   // Get current states here
-
   // Grow the tree
   grow () {
+    if(this.age<25 && this.height<8) {
+      this.age += 1
+      this.height += (Math.round(Math.random()*10)/10)
+    } else if(this.age<25 && this.height>=8) {
+      this.age += 1
+      this.height += 0
+    } else if (this.age>=25) {
+      this.healtyStatus=false
+    } 
   }
 
-  // Produce some mangoes
-  produceMangoes () {
+  // Produce some fruits
+  produceFruits() {
+    let fruitRNG = Math.floor(Math.random()*10)
+    if(this.age>=8) {
+      for(let x=0; x<fruitRNG; x++) {
+        let fruit = new Fruit ()
+        this.fruits += 1
+        if(fruit.quality()===false) {
+          this.bFruit += 1
+        } else {
+          this.gFruit += 1
+        }
+      }
+    }   
   }
 
   // Get some fruits
-  harvest () {
+  harvest() {
+    this.fruits = 0
+    this.gFruit = 0
+    this.bFruit = 0
   }
 
+  fruitDriver () {
+    console.log('The Fruit Tree starting on a Journey :)')
+    for(let x=0; x<30; x++) {
+      if(this.healtyStatus===false) {
+        console.log('Fruit Tree sadly has met its end :(')
+        console.log('')
+        break
+      } else {
+        this.grow ()
+        this.produceFruits ()
+        console.log(`[Year ${this.age} Report] Height = ${this.height.toFixed(1)} | Fruits harvested = ${this.fruits} (${this.gFruit} good, ${this.bFruit} bad)`)
+        this.harvest ()
+      }
+    }
+  }
+  
 }
 
-class Mango {
+class Fruit {
+  // Produce a fruit
+  constructor() { 
+    this.rng = (Math.round(Math.random()*1))
+  }
+
+  quality () {
+    
+    if(this.rng===1) {
+      return false
+    } else {
+      return true
+    }
+  }
+}
+var fruitTree = new FruitTree (0, 0, 0, true)
+
+fruitTree.fruitDriver()
+
+// release 0
+
+class MangoTree extends FruitTree {
+
+  // Initialize a new MangoTree
+  constructor(age, height, fruits, healtyStatus) {
+    super (age, height, fruits, healtyStatus)
+  }
+
+  mangoDriver () {
+    console.log('The Mango Tree starting on a Journey :)')
+    for(let x=0; x<30; x++) {
+      if(this.healtyStatus===false) {
+        console.log('Mango Tree sadly has met its end :(')
+        console.log('')
+        break
+      } else {
+        this.grow ()
+        this.produceFruits ()
+        console.log(`[Year ${this.age} Report] Height = ${this.height.toFixed(1)} | Fruits harvested = ${this.fruits} (${this.gFruit} good, ${this.bFruit} bad)`)
+        this.harvest ()
+      }
+    }
+  }
+}
+
+class Mango extends Fruit {
   // Produce a mango
-  constructor () {
+  constructor() { 
+    super ()
   }
 }
+
+var mangoTree = new MangoTree (0, 0, 0, true)
+
+mangoTree.mangoDriver()
 
 /**
   * driver code untuk release 0
@@ -53,15 +173,82 @@ class Mango {
   * do {
   *   mangoTree.grow();
   *   mangoTree.produceMangoes();
-  *   mangoTree.harverst();
+  *   mangoTree.harvest();
   *   console.log(`[Year ${tree.age} Report] Height = ${tree.height} | Fruits harvested = ${tree.harvested}`)
-  * } while (mangoTree.healthStatus != false)
+  * } while (mangoTree.healthyStatus != false)
   */
 
 // Release 1
-class AppleTree {}
-class Apple {}
+class AppleTree extends FruitTree {
 
-// Release 2
-class FruitTree {}
-class Fruit {}
+  // Initialize a new MangoTree
+  constructor(age, height, fruits, healtyStatus) {
+    super (age, height, fruits, healtyStatus)
+  }
+
+  appleDriver () {
+    console.log('The Apple Tree starting on a Journey :)')
+    for(let x=0; x<30; x++) {
+      if(this.healtyStatus===false) {
+        console.log('Apple Tree sadly has met its end :(')
+        console.log('')
+        break
+      } else {
+        this.grow ()
+        this.produceFruits ()
+        console.log(`[Year ${this.age} Report] Height = ${this.height.toFixed(1)} | Fruits harvested = ${this.fruits} (${this.gFruit} good, ${this.bFruit} bad)`)
+        this.harvest ()
+      }
+    }
+  }
+}
+
+class Apple extends Fruit {
+  // Produce a apple
+  constructor() { 
+    super ()
+  }
+}
+
+var appleTree = new AppleTree (0, 0, 0, true)
+
+appleTree.appleDriver()
+
+class PearTree extends FruitTree {
+
+  // Initialize a new MangoTree
+  constructor(age, height, fruits, healtyStatus) {
+    super (age, height, fruits, healtyStatus)
+  }
+
+  appleDriver () {
+    console.log('The Pear Tree starting on a Journey :)')
+    for(let x=0; x<30; x++) {
+      if(this.healtyStatus===false) {
+        console.log('Pear Tree sadly has met its end :(')
+        console.log('')
+        break
+      } else {
+        this.grow ()
+        this.produceFruits ()
+        console.log(`[Year ${this.age} Report] Height = ${this.height.toFixed(1)} | Fruits harvested = ${this.fruits} (${this.gFruit} good, ${this.bFruit} bad)`)
+        this.harvest ()
+      }
+    }
+  }
+}
+
+class Pear extends Fruit {
+  // Produce a apple
+  constructor() { 
+    super ()
+  }
+}
+
+var pearTree = new PearTree (0, 0, 0, true)
+
+pearTree.appleDriver()
+
+
+
+module.exports ={MangoTree, AppleTree, PearTree}
