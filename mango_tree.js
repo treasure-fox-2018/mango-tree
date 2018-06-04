@@ -5,45 +5,56 @@
 class MangoTree {
 
   // Initialize a new MangoTree
-  constructor () {
+  constructor(age, height, fruits, healthStatus, harvested) {
+
+    this.age = age
+    this.height = height
+    this.fruits = fruits
+    this.healthStatus = healthStatus
+    this.harvest = harvest
+
   }
 
-  get age () {
-  }
+  get age() {
 
-  get height () {
 
   }
 
-  get fruits () {
+  get height() {
+
   }
 
-  get healthStatus () {
+  get fruits() {
+
   }
 
-  get harvested () {
+  get healthStatus() {
+  }
+
+  get harvested() {
 
   }
 
   // Get current states here
 
   // Grow the tree
-  grow () {
+  grow() {
+    
   }
 
   // Produce some mangoes
-  produceMangoes () {
+  produceMangoes() {
   }
 
   // Get some fruits
-  harvest () {
+  harvest() {
   }
 
 }
 
 class Mango {
   // Produce a mango
-  constructor () {
+  constructor() {
   }
 }
 
@@ -59,9 +70,9 @@ class Mango {
   */
 
 // Release 1
-class AppleTree {}
-class Apple {}
+class AppleTree { }
+class Apple { }
 
 // Release 2
-class FruitTree {}
-class Fruit {}
+class FruitTree { }
+class Fruit { }
