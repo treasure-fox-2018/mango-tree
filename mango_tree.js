@@ -4,7 +4,6 @@
 
 class MangoTree {
 
-  // Initialize a new MangoTree
   constructor () {
   }
 
