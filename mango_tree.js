@@ -6,23 +6,32 @@ class MangoTree {
 
   // Initialize a new MangoTree
   constructor () {
+    this._age = 0;
+    this._height = 0;
+    this._fruits = 0;
+    this._healthStatus = true;
+    this._harvested = 0
   }
 
   get age () {
+    return this._age;
   }
 
   get height () {
+    return this._height;
 
   }
 
   get fruits () {
+    return this._fruits;
   }
 
   get healthStatus () {
+    return this._healthStatus;
   }
 
   get harvested () {
-
+    return this._harvested;
   }
 
   // Get current states here
@@ -43,7 +52,8 @@ class MangoTree {
 
 class Mango {
   // Produce a mango
-  constructor () {
+  constructor (stats) {
+    this._stats = this.quality;
   }
 }
 
