@@ -5,7 +5,12 @@
 class MangoTree {
 
   // Initialize a new MangoTree
-  constructor () {
+  constructor (age, height, fruits, pickedFruits, healthStatus) {
+    this._age = age;
+    this._height = height;
+    this._fruits = fruits;
+    this._pickedFruits = pickedFruits;
+    this._healthStatus = healthStatus;
   }
 
   get age () {
@@ -44,6 +49,8 @@ class MangoTree {
 class Mango {
   // Produce a mango
   constructor () {
+    var goodBad = ['good','bad'];
+    this._quality = goodBad[Math.floor(Math.random()*goodBad.length)];
   }
 }
 
