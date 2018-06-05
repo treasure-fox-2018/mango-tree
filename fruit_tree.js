@@ -1,20 +1,18 @@
 "use strict"
 
-// Release 0
 
-class MangoTree {
+class FruitTree {
 
-  // Initialize a new MangoTree
-  constructor (age = 0 , height = 0, healthStatus = true, harvested = 0, matureAge = 5, limitAge = 20) {
-    this._age = age;
-    this._heigth = height;
+  constructor () {
+    this._age = 0;
+    this._heigth = 0;
     this._fruits = [];
-    this._healthStatus = healthStatus;
-    this._harvested = harvested;
-    this._matureAge = matureAge;
-    this._limitAge = limitAge;
-    this._ageIncreamentLimit = 1;
-    this._maxFruitsPerProduce = 15;
+    this._healthStatus = true;
+    this._harvested = 0;
+    this._matureAge = 5;
+    this._limitAge = 20;
+    this._hightIncreamentLimit = 1;
+    this._maxFruitsPerProduce = 10;
   }
 
   get age () {
@@ -45,14 +43,13 @@ class MangoTree {
       console.log("The tree is alive!")
     }
     this._age++;
-    this._heigth += Math.random()*this._ageIncreamentLimit; //add random height from 0 to age increament limit
+    this._heigth += Math.random()*this._hightIncreamentLimit; //add random height from 0 to age increament limit
     if (this._age === this._limitAge) {
       this._healthStatus = false;
     }
   }
 
-  // Produce some mangoes
-  produceMangoes () {
+  produceFruit () {
     if (this._age >= this._matureAge) {
       let numberManggo = Math.floor(Math.random()*this._maxFruitsPerProduce)
       for (let i = 0 ; i < numberManggo ; i++) {
@@ -78,8 +75,7 @@ class MangoTree {
 
 }
 
-class Mango {
-  // Produce a mango
+class Fruit {
   constructor () {
     this._quality = this.randomQuality()
   }
@@ -95,19 +91,7 @@ class Mango {
   }
 }
 
-// driver code untuk release 0
-let mangoTree = new MangoTree()
-do {
-  mangoTree.grow();
-  mangoTree.produceMangoes();
-  mangoTree.harvest();
-  console.log(`[Year ${mangoTree.age} Report] Height = ${mangoTree.height} m | Fruits harvested = ${mangoTree.harvested}`)
-} while (mangoTree.healthStatus === true)
-console.log("The tree has met its end.")
-// Release 1
-class AppleTree {}
-class Apple {}
-
-// Release 2
-class FruitTree {}
-class Fruit {}
+module.exports = {
+  fruitTreeClass : FruitTree,
+  fruitClass : Fruit
+}
