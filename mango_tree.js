@@ -6,6 +6,11 @@ class MangoTree {
 
   // Initialize a new MangoTree
   constructor () {
+    this.age = age
+    this.height = height
+    this.fruits = fruits
+    this.harvested = harvested
+    this.healthStatus = healthStatus
   }
 
   get age () {
@@ -29,6 +34,8 @@ class MangoTree {
 
   // Grow the tree
   grow () {
+    var age = 12;
+
   }
 
   // Produce some mangoes
@@ -44,7 +51,17 @@ class MangoTree {
 class Mango {
   // Produce a mango
   constructor () {
+    this.quality = this.randomMango()
   }
+
+  randomMango() {
+    let qual = ['bad', 'good']
+    var randomIdx = Math.floor(Math.random() * 2)
+    console.log(randomIdx)
+    return qual[randomIdx]
+  }
+
+  
 }
 
 /**
@@ -65,3 +82,8 @@ class Apple {}
 // Release 2
 class FruitTree {}
 class Fruit {}
+var mangoTree = new MangoTree()
+var mango = new Mango()
+console.log(mango);
+
+
