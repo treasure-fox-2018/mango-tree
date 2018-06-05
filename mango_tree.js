@@ -1,5 +1,5 @@
 
-const {FruitTree,Fruit} = require("./fruit_tree.js");
+const FruitTree = require("./fruit_tree.js");
 
 class MangoTree extends FruitTree {
   constructor() {
@@ -27,4 +27,4 @@ class Mango extends Fruit {
   //   console.log(`[Year ${fruitTree.age} Report] Height = ${fruitTree.height} | Fruits harvested = ${fruitTree.harvested}`)
   //  } while (fruitTree.healthStatus != false)
 
-module.export = {MangoTree,mango}
+module.export = MangoTree

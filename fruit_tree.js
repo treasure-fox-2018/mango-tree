@@ -36,41 +36,38 @@ class FruitTree {
 
   // Grow the tree
   grow () {
-    // jika umur si buah masih di bawah umur maximum(dead) umurnya tambah terus
     if (this._age < this.maxAge) {
       this._age++
       var randomHeight = Math.random()
-      this._height += +randomHeight // untuk akumulasi pertambahan tiap tahun
+      this._height += +randomHeight 
     } else {
-      this._healthStatus = false // buat nge stopin pertambahan umur
+      this._healthStatus = false 
     }
   }
 
   // Produce some mangoes
   produceMangoes () {
-    // kasih kondisi kapan harus produksi mangga nya
+
     if (this._age >= this.mature && this.age < this.maxAge && this.healthStatus === true) {
-      var fruitsTotal = Math.floor(Math.random()*10) // total buah nya random
+      var fruitsTotal = Math.floor(Math.random()*10) 
     }
-    // ini looping buat ngasih tau mangga nya bad/good sebanyak fruitsJumlah (krn gatau kapan ngasilin nya makanya random)
+   
     for (let i = 0; i < fruitsTotal; i++) {
       let fruit = new Fruit()
-      this._fruits.push(fruit) // bikin array of object good n bad nya
+      this._fruits.push(fruit) 
     } 
   }
 
   // Get some fruits
   harvest () {
-    // looping untuk dapetin jumlah yg good n bad
     for (let i = 0; this._fruits.length; i++) {
       let fruit = this._fruits[i]
-      // jika di dalam array of object si this._fruits[i].qualityChance ketemu good maka countGood +1
       if (fruit.quality === 'good') { 
         this.countGood++
       } else if (fruit.quality=== 'bad') {
         this.countBad++
       }
-      this._fruits = [] // buat nge reset jumlah fruit nya
+      this._fruits = [] 
     }  
     this._harvested = `${this.countBad + this.countGood} (${this.countGood} Good, ${this.countBad} Bad)`
   }
@@ -78,13 +75,13 @@ class FruitTree {
 }
 
 class Fruit {
-  // Produce a mango CUMA 1 buah
+
   constructor () {
     this.quality = this.qualityCheck()
   } 
 
   qualityCheck() {
-    // buat nentuin si 1 buah itu good or bad
+
     let goodBad = ['good','bad']
     let check = goodBad[Math.floor(Math.random()*2)]
     return check
