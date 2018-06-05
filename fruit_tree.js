@@ -4,9 +4,7 @@ class FruitTree {
   constructor(maxAge, matureAge) {
     this._maxAge = maxAge;
     this._matureAge = matureAge;
-    this._totalFruit = 0;
     this._healtStatus = true;
-    this._qualityFruit = [];
     this._age = 0;
     this._fruits = [];
     this._height = 0;
@@ -36,24 +34,23 @@ class FruitTree {
   grow() {
     this._age += 1;
     let height = this._height;
-
-    if (this._height < 3) {
+    let isMature = this._height < this._matureAge
+    
+    if (isMature) {
       this._height += Math.random() * 0.5 + 0.5;
     }
 
-    if (this._age === this._maxAge) {
-      this._healtStatus = false;
-    }
+    let isHealthy = this._age < this._maxAge
+    this._healtStatus = isHealthy;
+
   }
 
   produce() {
-    this._qualityFruit = [];
     let random = Math.floor(Math.random() * 10 + 5);
-
     if (this._age >= this._matureAge) {
       for (let i = 0; i < random; i++) {
-        var newMango = new Fruit();
-        this._qualityFruit.push(newMango.quality());
+        let newFruit = new Fruit()
+        this._fruits.push(newFruit);
       }
     }
   }
@@ -61,13 +58,13 @@ class FruitTree {
   harvest() {
     let goodFruit = 0
     let badFruit = 0
-    let qualityFruits = this._qualityFruit
+    let qualityFruits = this._fruits
     let totalFruits = qualityFruits.length
 
     for (let i = 0; i < qualityFruits.length; i++) {
-      if (qualityFruits[i] === 'Good') {
+      if (qualityFruits[i]._quality === 'Good') {
         goodFruit++
-      } else if (qualityFruits[i] === 'Bad') {
+      } else if (qualityFruits[i]._quality === 'Bad') {
         badFruit++
       }
     }
@@ -76,13 +73,21 @@ class FruitTree {
 }
 
 class Fruit {
-  constructor() {}
+  constructor() {
+    this._quality = this.quality()
+  }
+
+  get quality() {
+    return this._quality
+  }
 
   quality() {
     let qualitys = ["Good", "Bad"];
-    let angkaRandom = Math.floor(Math.random() * 2);
-    return qualitys[angkaRandom];
+    let random = Math.floor(Math.random() * 2);
+    return qualitys[random]
   }
 }
+
+const tes = new FruitTree()
 
 module.exports = [FruitTree, Fruit]
