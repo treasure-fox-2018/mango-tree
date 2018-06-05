@@ -4,16 +4,17 @@ const fruitTree = require('./fruit_tree.js')
 const FruitTree = fruitTree[0]
 const Fruit = fruitTree[1]
 
-class MangoTree extends FruitTree{
+class PearTree extends FruitTree{
   constructor(maxAge, matureAge) {
-    super(25, 6)
+    super(20, 5)
   }
 }
 
-class Mango extends Fruit{
+class Pear extends Fruit{
   constructor() {
     super()
   }
+
 }
 
-module.exports = MangoTree
+module.exports = PearTree
