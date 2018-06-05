@@ -1,15 +1,20 @@
 "use strict"
 
 // release 0
-
 class MangoTree {
   // Initialize a new MangoTree
-  constructor() {
+  constructor(name) {
+    this._name = name;
     this._age = 0;
     this._height = 0;
     this._fruits = [];
     this._healthyStatus = 'alive';
     this._harvested = ''
+  }
+  
+  // Get current states here
+  get name() {
+    return this._name;
   }
 
   get age() {
@@ -31,9 +36,6 @@ class MangoTree {
   get harvested() {
     return this._harvested;
   }
-
-
-  // Get current states here
 
   // Grow the tree
   grow() {
@@ -70,12 +72,14 @@ class MangoTree {
         bad++
       }
     }
+    this._harvested = `${this._fruits.length} (${good} good, ${bad} bad)`
+    this._fruits = []
   }
 
 }
 
+// Produce a mango
 class Mango {
-  // Produce a mango
   constructor() {
     this.quality =  this.fruitQuality();
   }
@@ -91,7 +95,7 @@ class Mango {
 }
 
   // driver code untuk release 0
-  let mangoTree = new MangoTree()
+  let mangoTree = new MangoTree('Mango')
   do {
 
     if(mangoTree.age == 0) {
@@ -134,7 +138,7 @@ class AppleTree extends MangoTree {
       let random = Math.ceil(Math.random() * 30);
     
       for(let i = 0; i < random; i++) {
-        this._fruits.push(new Mango);
+        this._fruits.push(new Apple);
       }
     }
   }
@@ -161,8 +165,10 @@ do {
 
 // Release 2
 class FruitTree {
-
+  // in mango_tree_release2.js
 }
+
 class Fruit {
 
 }
+// console.log(mangoTree) //test check MangoTree
