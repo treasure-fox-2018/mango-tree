@@ -5,9 +5,9 @@
 const fruitTreeObj = require(`./fruit_tree.js`)
 let fruitTree = fruitTreeObj.FruitTree
 let Fruit = fruitTreeObj.Fruits
-class MangoTree {
 
-  // Initialize a new MangoTree
+class AppleTree {
+
   constructor() {
 
     this._age = 0
@@ -15,7 +15,6 @@ class MangoTree {
     this._fruits = []
     this._healthStatus = true
     this._harvest = 0
-
 
   }
 
@@ -49,8 +48,8 @@ class MangoTree {
   // Grow the tree
   grow() {
 
-    this.maxAge = 20
-    this.stopGrowth = 14
+    this.maxAge = 26
+    this.stopGrowth = 12
     this._age++
 
     if (this._age <= this.stopGrowth) {
@@ -69,18 +68,18 @@ class MangoTree {
   }
 
 
-  produceMangoes() {
+  produceApples() {
 
-    this.matureAge = 3
+    this.matureAge = 5
     this._fruits = []
     if (this._age >= this.matureAge) {
-      this.produce = Math.floor(Math.random() * 10)
+      this.produce = Math.floor(Math.random() * 15)+2
       for (let i = 0; i < this.produce; i++) {
-        let mango = new Mango()
-        if (mango.fruitfull === 1) {
-          this._fruits.push(mango)
+        let apple = new Apple()
+        if (apple.fruitfull === 1) {
+          this._fruits.push(apple)
         } else {
-          this._fruits.push(mango)
+          this._fruits.push(apple)
         }
       }
     }
@@ -111,8 +110,7 @@ class MangoTree {
 
 }
 
-class Mango {
-  // Produce a mango
+class Apple {
 
   constructor() {
 
@@ -122,14 +120,16 @@ class Mango {
 
 }
 
-// console.log("The mango tree is alive! :smile:")
-let mangoTree = new MangoTree()
+// console.log("The appl tree is alive! :smile:")
+let appleTree = new AppleTree()
 // do {
-//   mangoTree.grow();
-//   mangoTree.produceMangoes();
-//   mangoTree.harvest();
-//   console.log(`[Year ${mangoTree.age} Report] Height = ${mangoTree.height} | Fruits harvested = ${mangoTree.harvested}`)
-// } while (mangoTree.healthStatus != false)
+//   appleTree.grow();
+//   appleTree.produceApples();
+//   appleTree.harvest();
+//   console.log(`[Year ${appleTree.age} Report] Height = ${appleTree.height} | Fruits harvested = ${appleTree.harvested}`)
+// } while (appleTree.healthStatus != false)
 // console.log('tree dead :c')
 
-// module.exports =MangoTree
+module.exports = AppleTree
+
+
