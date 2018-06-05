@@ -53,8 +53,8 @@ class FruitTree {
     if (this._age >= this._matureAge) {
       let numberManggo = Math.floor(Math.random()*this._maxFruitsPerProduce)
       for (let i = 0 ; i < numberManggo ; i++) {
-        let manggo = new Mango();
-        this._fruits.push(manggo);
+        let fruit = new Fruit();
+        this._fruits.push(fruit);
       }
     }
     // console.log(this._fruits);
