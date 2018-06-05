@@ -1,5 +1,7 @@
 "use strict"
 
+const fruitManggo = require('./mango.js');
+
 // Release 0
 
 class MangoTree {
@@ -40,11 +42,12 @@ class MangoTree {
     // Grow the tree
     grow () {
         this._age += 1;
-        let randomHeight = Number(parseFloat(Math.random()).toFixed(2));
+        let randomHeight = Math.random();
         // this._height += randomHeight;
 
         if (this._age < this._maxProductiveAge) {
             this._height += randomHeight;
+            this._height = +this._height.toFixed(1);
         }
 
         if (this._age === this._maxAge) {
@@ -60,7 +63,7 @@ class MangoTree {
         if (this._age >= this._matureAge) {
             fruitsProduced = this.randomize(1, 50);
             for (let i = 0; i < fruitsProduced; i++) {
-                let mango = new Mango();
+                let mango = new fruitManggo.Mango();
                 this._fruits.push(mango.quality());
             }
         }
@@ -68,6 +71,7 @@ class MangoTree {
 
     // Get some fruits
     harvest () {
+        // console.log(this._fruits);
         let fruitsHarvested = this._fruits.length;
         let goodFruits = 0;
         let badFruits = 0;
@@ -88,21 +92,21 @@ class MangoTree {
     }
 }
 
-class Mango {
-  // Produce a mango
-  constructor () {
-      this._quality = this.quality();
-  }
-
-  get quality() {
-      return this._quality;
-  }
-
-  quality() {
-      let fruitCondition = ['good', 'good', 'good', 'bad'];
-      return fruitCondition[Math.floor((Math.random() * 4) + 0)];
-  }
-}
+// class Mango {
+//   // Produce a mango
+//   constructor () {
+//       this._quality = this.quality();
+//   }
+//
+//   get quality() {
+//       return this._quality;
+//   }
+//
+//   quality() {
+//       let fruitCondition = ['good', 'good', 'good', 'bad'];
+//       return fruitCondition[Math.floor((Math.random() * 4) + 0)];
+//   }
+// }
 
 //
 
@@ -113,7 +117,7 @@ do {
     mangoTree.grow();
     mangoTree.produceMangoes();
     mangoTree.harvest();
-    console.log(`[Year ${mangoTree.age} Report] Height = ${mangoTree.height} | Fruits harvested = ${mangoTree.harvested}`)
+    console.log(`[Year ${mangoTree.age} Report] Height = ${mangoTree.height} m | Fruits harvested = ${mangoTree.harvested}`)
 } while (mangoTree.healthStatus != false)
 
 console.log('\n                       Your tree has met it`s end. Sad :)');
