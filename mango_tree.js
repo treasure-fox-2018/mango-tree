@@ -1,67 +1,46 @@
-"use strict"
+let importClass = require('./fruit_tree.js')
 
-// Release 0
+let FruitTreeClass = importClass.fruitTreeClass;
+let FruitClass = importClass.fruitClass;
 
-class MangoTree {
-
-  // Initialize a new MangoTree
-  constructor () {
+class MangoTree extends FruitTreeClass {
+  constructor() {
+    super()
+    //Override parent param
+    this._age = 0; //start age
+    this._heigth = 2; //start high
+    this._matureAge = 3;
+    this._limitAge = 15;
+    this._hightIncreamentLimit = 2;
+    this._maxFruitsPerProduce = 30;
   }
 
-  get age () {
-  }
-
-  get height () {
-
-  }
-
-  get fruits () {
-  }
-
-  get healthStatus () {
-  }
-
-  get harvested () {
-
-  }
-
-  // Get current states here
-
-  // Grow the tree
-  grow () {
-  }
-
-  // Produce some mangoes
-  produceMangoes () {
-  }
-
-  // Get some fruits
-  harvest () {
+  //Override parent produceFruitMethod
+  produceFruit () {
+    if (this._age >= this._matureAge) {
+      let numberMango = Math.floor(Math.random()*this._maxFruitsPerProduce)
+      for (let i = 0 ; i < numberMango ; i++) {
+        let mango = new Mango();
+        this._fruits.push(mango);
+      }
+    }
   }
 
 }
 
-class Mango {
-  // Produce a mango
-  constructor () {
+class Mango extends FruitClass {
+  constructor(){
+    super();
   }
 }
 
-/**
-  * driver code untuk release 0
-  * let mangoTree = new MangoTree()
-  * do {
-  *   mangoTree.grow();
-  *   mangoTree.produceMangoes();
-  *   mangoTree.harverst();
-  *   console.log(`[Year ${tree.age} Report] Height = ${tree.height} | Fruits harvested = ${tree.harvested}`)
-  * } while (mangoTree.healthStatus != false)
-  */
+// let newMango = new MangoTree()
+// do {
+//   newMango.grow();
+//   newMango.produceFruit();
+//   newMango.harvest();
+//   console.log(`[Year ${newMango.age} Report] Height = ${newMango.height} m | Fruits harvested = ${newMango.harvested}`)
+// } while (newMango.healthStatus === true)
+// console.log("The tree has met its end.")
 
-// Release 1
-class AppleTree {}
-class Apple {}
-
-// Release 2
-class FruitTree {}
-class Fruit {}
+module.exports = MangoTree;
