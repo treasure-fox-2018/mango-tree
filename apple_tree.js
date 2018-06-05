@@ -4,15 +4,15 @@ const FruitTreeArr = require("./fruit_tree.js");
 let FruitTree = FruitTreeArr[0];
 let Fruit = FruitTreeArr[1];
 
-class MangoTree extends FruitTree{
-  constructor () {
+class AppleTree extends FruitTree{
+  constructor() {
     super()
   }
   // Grow the tree
   grow () {
-    let dyingAge = 15;
-    let maxHeight = 7;
-    let heightGrowthParameter = (Math.random()*0.9) + 0.1;
+    let dyingAge = 30;
+    let maxHeight = 9;
+    let heightGrowthParameter = (Math.random()*1.4) + 0.7;
     this._age += 1;
     if (this._height < maxHeight) {
       let heightGrowth = heightGrowthParameter;
@@ -25,7 +25,7 @@ class MangoTree extends FruitTree{
 
   // Produce some fruits
   produceFruits () {
-    this._matureAge = 3;
+    this._matureAge = 8;
     if (this._age < this._matureAge) {
       return this._fruits = 0;
     }
@@ -34,11 +34,10 @@ class MangoTree extends FruitTree{
     return this._fruits = fruitsProduced;
   }
 }
-class Mango extends Fruit {
+class Apple extends Fruit{
   constructor() {
     super()
   }
 }
 
-
-module.exports = MangoTree;
+module.exports = AppleTree;
