@@ -3,13 +3,13 @@ const fruitTree = require('./fruit_tree.js');
 let Fruit = fruitTree.Fruit;
 let FruitTree = fruitTree.FruitTree;
 
-class Mango extends fruitTree.Fruit {
+class Mango extends Fruit {
   constructor () {
       super();
   }
 }
 
-class MangoTree extends fruitTree.FruitTree {
+class MangoTree extends FruitTree {
     constructor () {
         super();
         this._name = 'mango';

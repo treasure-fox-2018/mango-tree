@@ -9,7 +9,7 @@ class Apple extends Fruit {
   }
 }
 
-class AppleTree extends fruitTree.FruitTree {
+class AppleTree extends FruitTree {
     constructor () {
         super();
         this._name = 'apple';
