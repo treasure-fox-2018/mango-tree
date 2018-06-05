@@ -1,10 +1,8 @@
 "use strict"
 
-// Release 0
-
-class MangoTree {
-  // Initialize a new MangoTree
-  constructor () {
+// Release 2
+class FruitTree {
+  constructor() {
     this._age = 0
     this._matureAge = 5
     this._maxHeightAge = 10
@@ -23,9 +21,8 @@ class MangoTree {
   get harvested() { return this._harvested }
 
   // Get current states here
-
   // Grow the tree
-  grow () {
+  grow() {
     let random = Math.random() * (0.9 - 0.1) + 0.1;
     let randomHeight = String(random).substring(0,3)
     
@@ -35,19 +32,18 @@ class MangoTree {
     if(this._age === this._maxAge) { this._healthStatus = false }
   }
 
-  // Produce some mangoes
-  produceMangoes () {
+  produceFruits() {
     if (this._isHarvest === true) {
       let randomNum = Math.round(Math.random() * (10 - 1) + 1)
       for (let i = 0; i < randomNum; i++) {
-        let mango = new Mango()
-        this._fruits.push(mango)
+        let fruit = new Fruit()
+        this._fruits.push(fruit)
       }
     }
   }
 
   // Get some fruits
-  harvest () {
+  harvest() {
     let counter = { good: 0, bad: 0, total: 0 }
 
     for (let i = 0; i < this._fruits.length; i++) {
@@ -62,8 +58,7 @@ class MangoTree {
   }
 }
 
-class Mango {
-  // Produce a mango
+class Fruit {
   constructor () {
     this._quality = this.randomQuality();
   }
@@ -77,22 +72,99 @@ class Mango {
   }
 }
 
+// Release 0
+class MangoTree extends FruitTree {
+  // Initialize a new MangoTree
+  constructor () {
+    super();
+    this._matureAge = 5
+    this._maxHeightAge = 10
+    this._maxAge = 20
+  }
 
-//  driver code untuk release 0
- let mangoTree = new MangoTree()
- do {
-   mangoTree.grow();
-   mangoTree.produceMangoes();
-   mangoTree.harvest();
+  get age() { return this._age }
+  get height() { return this._height }
+  get fruits() { return this._fruits }
+  get healthStatus() { return this._healthStatus }
+  get harvested() { return this._harvested }
 
-   console.log(`[Year ${mangoTree.age} Report] Height = ${mangoTree.height} | Fruits harvested = ${mangoTree.harvested}`)
- } while (mangoTree.healthStatus != false)
-  
+  // Produce some mangoes
+  produceMangoes() {
+    if (this._isHarvest === true) {
+      let randomNum = Math.round(Math.random() * (10 - 1) + 1)
+      for (let i = 0; i < randomNum; i++) {
+        let mango = new Mango()
+        this._fruits.push(mango)
+      }
+    }
+  }
+}
+
+class Mango extends Fruit {
+  // Produce a mango
+  constructor () {
+    super();
+  }
+
+  get quality() { return this._quality }
+}
 
 // Release 1
-class AppleTree {}
-class Apple {}
+class AppleTree extends FruitTree {
+  constructor () {
+    super();
+    this._matureAge = 3
+    this._maxHeightAge = 12
+    this._maxAge = 18
+  }
 
-// Release 2
-class FruitTree {}
-class Fruit {}
+  get age() { return this._age }
+  get height() { return this._height }
+  get fruits() { return this._fruits }
+  get healthStatus() { return this._healthStatus }
+  get harvested() { return this._harvested }
+
+  produceApples() {
+    if (this._isHarvest === true) {
+      let randomNum = Math.round(Math.random() * (10 - 1) + 1)
+      for (let i = 0; i < randomNum; i++) {
+        let apple = new Apple()
+        this._fruits.push(apple)
+      }
+    }
+  }
+}
+
+class Apple extends Fruit {
+  constructor () {
+    super();
+  }
+
+  get quality() { return this._quality }
+}
+
+//  driver code
+
+// Mango Tree
+let mangoTree = new MangoTree()
+console.log('=====Mango Tree=====')
+do {
+  mangoTree.grow();
+  mangoTree.produceMangoes();
+  // console.log(mangoTree)
+  mangoTree.harvest();
+
+  console.log(`[Year ${mangoTree.age} Report] Height = ${mangoTree.height} | Fruits harvested = ${mangoTree.harvested}`)
+} while (mangoTree.healthStatus != false)
+
+// Apple Tree
+let appleTree = new AppleTree()
+console.log('=====Apple Tree=====')
+do {
+  appleTree.grow();
+  appleTree.produceApples();
+  // console.log(appleTree)
+  appleTree.harvest();
+
+  console.log(`[Year ${appleTree.age} Report] Height = ${appleTree.height} | Fruits harvested = ${appleTree.harvested}`)
+} while (appleTree.healthStatus != false)
