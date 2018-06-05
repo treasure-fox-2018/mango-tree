@@ -3,32 +3,19 @@
 const fruitMango = require('./mango.js');
 const fruitApple = require('./apple.js');
 
-let appleTree = new fruitMango();
+let appleTree = new fruitApple();
+let mangoTree = new fruitMango();
 
-// ---------- > Apple
+let fruit = [appleTree, mangoTree]
 
+for (let i = 0; i < fruit.length; i++) {
+    console.log(`                       Your ${fruit[i].name} tree is alive! :(\n`);
+    do {
+        fruit[i].grow();
+        fruit[i].produceFruit();
+        fruit[i].harvest();
+        console.log(`[Year ${fruit[i].age} Report] Height = ${fruit[i].height} | Fruits harvested = ${fruit[i].harvested}`)
+    } while (fruit[i].healthStatus != false)
 
-console.log('                       Your APPLE tree is alive! :(\n');
-do {
-    appleTree.grow();
-    appleTree.produceFruit();
-    appleTree.harvest();
-    console.log(`[Year ${appleTree.age} Report] Height = ${appleTree.height} | Fruits harvested = ${appleTree.harvested}`)
-} while (appleTree.healthStatus != false)
-
-console.log('\n                       Your tree has met it`s end. Sad :)');
-
-console.log('\n');
-// -------- > Mango
-
-let mangoTree = new fruitApple();
-
-console.log('                       Your MANGO tree is alive! :(\n');
-do {
-    mangoTree.grow();
-    mangoTree.produceFruit();
-    mangoTree.harvest();
-    console.log(`[Year ${mangoTree.age} Report] Height = ${mangoTree.height} | Fruits harvested = ${mangoTree.harvested}`)
-} while (mangoTree.healthStatus != false)
-
-console.log('\n                       Your tree has met it`s end. Sad :)');
+    console.log(`\n                       Your ${fruit[i].name} has met it's end. Sad :)`);
+}

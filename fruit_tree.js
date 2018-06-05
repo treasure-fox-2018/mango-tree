@@ -51,27 +51,27 @@ class FruitTree {
     grow () {
         this._age += 1;
         let randomHeight = Math.random();
+        let isMature = this._age < this._maxProductiveAge
 
-        if (this._age < this._maxProductiveAge) {
+        if (isMature) {
             this._height += randomHeight;
             this._height = +this._height.toFixed(1);
         }
 
-        if (this._age === this._maxAge) {
-            this._healthStatus = false;
-        }
+        let isHealthy = this._age < this._maxAge
+        this._healthStatus = isHealthy;
+
     }
 
     // Produce some fruit
     produceFruit () {
         this._fruits = [];
-        let fruitsProduced = 0;
 
         if (this._age >= this._matureAge) {
-            fruitsProduced = this.randomize(1, 50);
+            let fruitsProduced = this.randomize(1, 50);
             for (let i = 0; i < fruitsProduced; i++) {
                 let mango = new Fruit();
-                this._fruits.push(mango.quality());
+                this._fruits.push(mango);
             }
         }
     }
@@ -83,9 +83,9 @@ class FruitTree {
         let badFruits = 0;
 
         for (let i = 0; i < fruitsHarvested; i++) {
-            if (this._fruits[i] === 'good') {
+            if (this._fruits[i]._quality === 'good') {
                 goodFruits += 1;
-            } else if (this._fruits[i] === 'bad'){
+            } else if (this._fruits[i]._quality === 'bad'){
                 badFruits += 1
             }
         }
