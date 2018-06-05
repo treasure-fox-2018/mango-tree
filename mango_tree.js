@@ -111,9 +111,9 @@ class Mango {
     
     mangoTree.grow();
     mangoTree.produceMangoes();
-    console.log(mangoTree);
+    // console.log(mangoTree);
     
-    // mangoTree.harverst();
+    mangoTree.harvest();
     console.log(`[Year ${mangoTree.age} Report] Height = ${mangoTree.height} m | Fruits harvested = ${mangoTree.harvested}`)
   } while (mangoTree.healthStatus != false)
   console.log('The tree has met its end. :sad:');
@@ -199,7 +199,7 @@ class AppleTree extends MangoTree{
 }
 
 let appleTree = new AppleTree
-console.log(appleTree);
+// console.log(appleTree);
 
 
 
@@ -211,6 +211,6 @@ class Apple extends Mango{
 
 // Release 2
 class FruitTree {
-  
+
 }
 class Fruit {}
