@@ -3,10 +3,11 @@
 class FruitTree {
   constructor () {
     this._age = 0;
+    this._matureAge = 5;
     this._height = 0;
     this._fruits = 0;
     this._harvested = null;
-    this._healthStatus = 'healthy';
+    this._healthStatus = true;
     this._totalFruitsProduced = 0;
     this._totalGoodFruitsProduced = 0;
     this._totalBadFruitsProduced = 0;
@@ -55,15 +56,14 @@ class FruitTree {
       let heightGrowth = heightGrowthParameter;
       this._height += heightGrowth;
     }
-    if (this._age > dyingAge) {
-      this._healthStatus = 'dead';
+    if (this._age === dyingAge) {
+      this._healthStatus = false;
     }
   }
 
   // Produce some fruits
   produceFruits () {
-    let matureAge = 5;
-    if (this._age < matureAge) {
+    if (this._age < this._matureAge) {
       return this._fruits = 0;
     }
     let fruitsProduced = Math.floor((Math.random()*15) + 1);

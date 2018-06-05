@@ -25,8 +25,8 @@ class PearTree extends FruitTree{
 
   // Produce some fruits
   produceFruits () {
-    let matureAge = 10;
-    if (this._age < matureAge) {
+    this._matureAge = 10;
+    if (this._age < this._matureAge) {
       return this._fruits = 0;
     }
     let fruitsProduced = Math.floor((Math.random()*15) + 1);
@@ -40,4 +40,4 @@ class Pear extends Fruit{
   }
 }
 
-module.exports = [PearTree, Pear];
+module.exports = PearTree;
