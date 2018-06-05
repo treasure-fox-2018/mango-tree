@@ -1,89 +1,40 @@
 "use strict"
+let tree = require('./fruitsTree.js')
+let Tree = tree.FruitTree
+let Fruit = tree.Fruits
 
 // Release 0
-
-class MangoTree {
-
+class MangoTree extends Tree{
+  
   // Initialize a new MangoTree
   constructor () {
-    this.age = age
-    this.height = height
-    this.fruits = fruits
-    this.harvested = harvested
-    this.healthStatus = healthStatus
+    super();
+    this._deathAge = 16
+    this._notGrowAge = 5
+    this._matureAge = 3
   }
-
-  get age () {
-  }
-
-  get height () {
-
-  }
-
-  get fruits () {
-  }
-
-  get healthStatus () {
-  }
-
-  get harvested () {
-
-  }
-
-  // Get current states here
-
-  // Grow the tree
-  grow () {
-    var age = 12;
-
-  }
-
-  // Produce some mangoes
-  produceMangoes () {
-  }
-
-  // Get some fruits
-  harvest () {
-  }
-
 }
 
-class Mango {
+class Mango extends Fruit{
   // Produce a mango
-  constructor () {
-    this.quality = this.randomMango()
+  constructor() {
+    super()
   }
-
-  randomMango() {
-    let qual = ['bad', 'good']
-    var randomIdx = Math.floor(Math.random() * 2)
-    console.log(randomIdx)
-    return qual[randomIdx]
-  }
-
-  
 }
 
-/**
-  * driver code untuk release 0
-  * let mangoTree = new MangoTree()
-  * do {
-  *   mangoTree.grow();
-  *   mangoTree.produceMangoes();
-  *   mangoTree.harverst();
-  *   console.log(`[Year ${tree.age} Report] Height = ${tree.height} | Fruits harvested = ${tree.harvested}`)
-  * } while (mangoTree.healthStatus != false)
-  */
 
-// Release 1
-class AppleTree {}
-class Apple {}
-
-// Release 2
-class FruitTree {}
-class Fruit {}
-var mangoTree = new MangoTree()
-var mango = new Mango()
-console.log(mango);
-
-
+// driver code untuk release 0
+let mangoTree = new MangoTree()
+let mango = new Mango()
+if (mangoTree.healthStatus === true) {
+  console.log('The Mango tree is alive ! :smile:')
+}
+do {
+  mangoTree.grow();
+  mangoTree.produceFruits();
+  mangoTree.harvest();
+  console.log(`[Year ${mangoTree.age} Report] Height = ${mangoTree.height} m | Fruits harvested = ${mangoTree.harvested} ${mangoTree.harvest()}`)
+  if (mangoTree.healthStatus === false) {
+    console.log('The Mango tree is die ! :sad:')
+  }
+} while (mangoTree.healthStatus !== false)
