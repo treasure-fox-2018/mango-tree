@@ -94,7 +94,7 @@ class FruitTree {
         this._bad++
       }
     }
-    this._harvestQuality = `(${this._good} good ${this._bad} bad)`
+    this._harvestQuality = `${this._harvested.length} (${this._good} good ${this._bad} bad)`
     this._harvested = []
   }
 
@@ -158,7 +158,7 @@ do {
     mangoTree.grow();
     mangoTree.produceFruits('Mango');
     mangoTree.harvest();
-    console.log(`[Year ${mangoTree.age} Report] Height = ${mangoTree.height} m | Fruits harvested = ${mangoTree.fruits} ${mangoTree._harvestQuality}`)
+    console.log(`[Year ${mangoTree.age} Report] Height = ${mangoTree.height} m | Fruits harvested = ${mangoTree._harvestQuality}`)
   } while (mangoTree.healthStatus != false)
 console.log('The tree has met its end :sad:')
 
@@ -170,7 +170,7 @@ do {
     appleTree.grow();
     appleTree.produceFruits('Apple');
     appleTree.harvest();
-    console.log(`[Year ${appleTree.age} Report] Height = ${appleTree.height} m | Fruits harvested = ${appleTree.fruits} ${appleTree._harvestQuality}`)
+    console.log(`[Year ${appleTree.age} Report] Height = ${appleTree.height} m | Fruits harvested = ${appleTree._harvestQuality}`)
   } while (appleTree.healthStatus != false)
 console.log('The tree has met its end :sad:')
 
@@ -182,6 +182,6 @@ do {
     pearTree.grow();
     pearTree.produceFruits('Pear');
     pearTree.harvest();
-    console.log(`[Year ${pearTree.age} Report] Height = ${pearTree.height} m | Fruits harvested = ${pearTree.fruits} ${pearTree._harvestQuality}`)
+    console.log(`[Year ${pearTree.age} Report] Height = ${pearTree.height} m | Fruits harvested = ${pearTree._harvestQuality}`)
   } while (pearTree.healthStatus != false)
 console.log('The tree has met its end :sad:')
