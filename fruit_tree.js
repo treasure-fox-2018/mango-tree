@@ -5,7 +5,7 @@
 class FruitTree {
 
   // Initialize a new MangoTree
-  constructor (age, height, fruits, healthStatus, harvested, matureAge, maxGrow, deadAge) {
+  constructor (matureAge, maxGrow, deadAge) {
     this._age = 0 // 0
     this._height = 0 // 0
     this._fruits = [] // 0
@@ -13,9 +13,9 @@ class FruitTree {
     this._bad = 0
     this._healthStatus = true // true
     this._harvested = 0 // 0
-    this._matureAge = 0 // 2
-    this._maxGrow = 0 // 10
-    this._deadAge = 0 // 15
+    this._matureAge = matureAge
+    this._maxGrow = maxGrow
+    this._deadAge = deadAge
     this._totalFruits = 0
   }
 
@@ -67,8 +67,8 @@ class FruitTree {
   // Produce some fruits
   produceFruits () {
     for(let i=0; i<this._totalFruits; i++) {
-      var objMango = new Fruit()
-      this._fruits.push(objMango)
+      var objFruit = new Fruit()
+      this._fruits.push(objFruit)
     }
   }
 
@@ -106,18 +106,8 @@ class Fruit {
 }
 
 class MangoTree extends FruitTree {
-  constructor() {
-    super();
-    this._matureAge = 4;
-    this._maxGrow = 10;
-    this._deadAge = 15;
-  }
-
-  produceFruits () {
-    for (var i = 0; i < this._totalFruits; i++) {
-      let fruit = new Fruit()
-      this._fruits.push(fruit);
-    }
+  constructor(matureAge, maxGrow, deadAge) {
+    super(matureAge, maxGrow, deadAge);
   }
 }
 
@@ -129,18 +119,8 @@ class Mango extends Fruit {
 
 
 class AppleTree extends FruitTree {
-  constructor() {
-    super();
-    this._matureAge = 2;
-    this._maxGrow = 7;
-    this._deadAge = 10;
-  }
-
-  produceFruits () {
-    for (var i = 0; i < this._totalFruits; i++) {
-      let fruit = new Fruit()
-      this._fruits.push(fruit);
-    }
+  constructor(matureAge, maxGrow, deadAge) {
+    super(matureAge, maxGrow, deadAge);
   }
 }
 
@@ -151,18 +131,8 @@ class Apple extends Fruit {
 }
 
 class PeerTree extends FruitTree {
-  constructor() {
-    super();
-    this._matureAge = 3;
-    this._maxGrow = 6;
-    this._deadAge = 12;
-  }
-
-  produceFruits () {
-    for (var i = 0; i < this._totalFruits; i++) {
-      let fruit = new Fruit()
-      this._fruits.push(fruit);
-    }
+  constructor(matureAge, maxGrow, deadAge) {
+    super(matureAge, maxGrow, deadAge);
   }
 }
 
@@ -175,7 +145,7 @@ class Peer extends Fruit {
 
 console.log('MangoTree >-------------MangoTree---------------> MangoTree')
 console.log('The tree is alive! :smile:');
-let mangoTree = new MangoTree()
+let mangoTree = new MangoTree(4, 10, 15)
 do{
   mangoTree.grow();
   mangoTree.produceFruits();
@@ -185,10 +155,9 @@ do{
 console.log('The tree has met its end. :sad:');
 
 
-
 console.log('AppleTree >--------------AppleTree--------------> AppleTree')
 console.log('The tree is alive! :smile:');
-let appleTree = new AppleTree()
+let appleTree = new AppleTree(2, 7, 10)
 do{
   appleTree.grow();
   appleTree.produceFruits();
@@ -200,7 +169,7 @@ console.log('The tree has met its end. :sad:');
 
 console.log('PeerTree >--------------PeerTree--------------> PeerTree')
 console.log('The tree is alive! :smile:');
-let peerTree = new PeerTree()
+let peerTree = new PeerTree(3, 6, 12)
 do{
   peerTree.grow();
   peerTree.produceFruits();
