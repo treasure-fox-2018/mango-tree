@@ -54,12 +54,21 @@ class FruitTree {
   }
 
   // Produce some mangoes
-  produceFruits () {
+  produceFruits (fruitName) {
     let quantityRandom = Math.ceil(Math.random() * 10);
     if (this._age >= this._matureAge){
       for (let i = 0; i < quantityRandom; i++){
-        let fruits = new Fruits()
-        this._fruits.push(fruits)
+        if (fruitName === 'mango'){
+          let mango = new Mango ()
+          this._fruits.push(mango)
+        } else if (fruitName === 'apple') {
+          let apple = new Apple ()
+          this._fruits.push(apple)
+        } else if (fruitName === 'pear') {
+          let pear = new Pear ()
+          this._fruits.push(pear)
+        }
+
       }
     }
     return this;
@@ -100,18 +109,58 @@ class Fruits {
 }
 
 
+//
+//
+//
+// Release 0
 
-// driver code untuk release 0
-let fruitTree = new FruitTree()
-do {
-  fruitTree.grow();
-  fruitTree.produceFruits();
-  fruitTree.harvest();
-  console.log(`[Year ${fruitTree.age} Report] Height = ${fruitTree.height} | Fruits harvested = ${fruitTree.harvested}`)
-} while (fruitTree.healthStatus != false)
-console.log('The tree has met its end. :sad:')
-
-module.exports = {
-  pohon: FruitTree,
-  buah: Fruits
+class AppleTree extends FruitTree {
+  constructor () {
+    super()
+    this._matureAge = 1; // starts producing
+    this._die = 11; //cant produce anymore
+  }
 }
+
+class Apple extends Fruits {
+  constructor () {
+    super()
+  }
+}
+
+class MangoTree extends FruitTree {
+  constructor () {
+    super()
+    this._matureAge = 5; // starts producing
+    this._die = 15; //cant produce anymore
+  }
+}
+
+class Mango extends Fruits {
+  constructor () {
+    super()
+  }
+}
+
+class PearTree extends FruitTree {
+  constructor () {
+    super()
+    this._matureAge = 10; // starts producing
+    this._die = 20; //cant produce anymore
+  }
+}
+
+class Pear extends Fruits {
+  constructor () {
+    super()
+  }
+}
+
+let pearTree = new PearTree()
+do {
+  pearTree.grow();
+  pearTree.produceFruits('pear');
+  pearTree.harvest();
+  console.log(`[Year ${pearTree.age} Report] Height = ${pearTree.height} | Fruits harvested = ${pearTree.harvested}`)
+} while (pearTree.healthStatus != false)
+console.log('The tree has met its end. :sad:')

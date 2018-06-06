@@ -15,7 +15,7 @@ class AppleTree extends Tree {
   }
 }
 
-class Apple extends Tree {
+class Apple extends Fruits {
   constructor () {
     super()
   }
@@ -27,7 +27,7 @@ class Apple extends Tree {
 let appleTree = new AppleTree()
 do {
   appleTree.grow();
-  appleTree.produceFruits();
+  appleTree.produceFruits('apple');
   appleTree.harvest();
   console.log(`[Year ${appleTree.age} Report] Height = ${appleTree.height} | Fruits harvested = ${appleTree.harvested}`)
 } while (appleTree.healthStatus != false)
