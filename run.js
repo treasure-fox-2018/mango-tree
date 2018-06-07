@@ -6,28 +6,10 @@ var ParentFruit = new parent[1];
 var pear = require('./pear-tree-release2.js');
 var mango = require('./mango-tree-release2.js');
 var apple = require('./apple-tree-release2.js');
-// console.log(ParentTree);
-// console.log(ParentFruit)
 
-var ChildsTree = [];
-var ChildsFruit = [];
+var ChildsTree = [pear[0], mango[0], apple[0]];
+var ChildsFruit = [pear[1], mango[1], apple[1]];
 
-
-for (var j = 0; j < 2; j++) {
-  if (j === 0) {
-    ChildsTree.push(pear[j]);
-    ChildsTree.push(mango[j]);
-    ChildsTree.push(apple[j]);
-  }
-  else {
-    ChildsFruit.push(pear[j]);
-    ChildsFruit.push(mango[j]);
-    ChildsFruit.push(apple[j]);
-  }
-}
-
-// console.log(ChildsTree);
-// console.log(ChildsFruit);
 
 for (var i = 0; i <= ChildsTree.length - 1; i++) {
   if (i === 0) {
@@ -39,7 +21,6 @@ for (var i = 0; i <= ChildsTree.length - 1; i++) {
   else {
     console.log('-----------------------------APPLE GARDEN-----------------------------')
   }
-  ChildsFruit[i];
   let fruitTree = new ChildsTree[i]
   do {
     fruitTree.grow();
