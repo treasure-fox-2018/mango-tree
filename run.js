@@ -31,19 +31,20 @@ for (var j = 0; j < 2; j++) {
 
 for (var i = 0; i <= ChildsTree.length - 1; i++) {
   if (i === 0) {
-    console.log('------------------------PEAR GARDEN--------------------------------')
+    console.log('-----------------------------PEAR GARDEN--------------------------------')
   }
   else if (i === 1) {
-    console.log('------------------------MANGO GARDEN-------------------------------')
+    console.log('-----------------------------MANGO GARDEN-------------------------------')
   }
   else {
-    console.log('------------------------APPLE GARDEN--------------------------------')
+    console.log('-----------------------------APPLE GARDEN-----------------------------')
   }
   ChildsFruit[i];
   let fruitTree = new ChildsTree[i]
   do {
     fruitTree.grow();
-    fruitTree.produceFruit();
+    let buahEach = ChildsFruit[i]
+    fruitTree.produceFruit(buahEach);
     fruitTree.harvest();
     console.log(`[Year ${fruitTree.age} Report] Height = ${fruitTree.height} m | Fruits harvested = ${fruitTree.harvested}`)
   }

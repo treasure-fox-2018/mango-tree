@@ -11,24 +11,6 @@ class MangoTree extends ParentTree {
     this._matureAge = 3;
   }
 
-  produceFruit () {
-    var fruitResult = [];
-    if (this._totalProduce > 0) {
-      for (var i = 0; i <= this._totalProduce - 1; i++) {
-        var fruit = new Mango ();
-        fruitResult.push(fruit.quality);
-      }
-      this._objFruits = {
-        fruitsLength : fruitResult.length,
-        fruitsArr : fruitResult
-        
-      }
-      // console.log(this._objFruits)
-      return this._objFruits
-      
-    }
-    
-  }
 }
 
 class Mango extends ParentFruit {

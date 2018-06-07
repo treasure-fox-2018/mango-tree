@@ -64,12 +64,12 @@ class FruitTree {
     return this
   }
 
-  // Produce some mangoes
-  produceFruit () {
+
+  produceFruit (buahEach) {
     var fruitResult = [];
     if (this._totalProduce > 0) {
       for (var i = 0; i <= this._totalProduce - 1; i++) {
-        var fruit = new Fruit ();
+        var fruit = new buahEach ();
         fruitResult.push(fruit.quality);
       }
       this._objFruits = {
