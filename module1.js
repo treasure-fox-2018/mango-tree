@@ -1,14 +1,10 @@
 // driver code untuk release 0
 
-let classes = require('./mango_tree');
+const MangoTree = require('./mango_tree.js');
 
-let MangoTree = classes.MangoTree;
+const AppleTree = require('./apple_tree.js');
 
-let AppleTree = classes.AppleTree;
-
-let PearTree = classes.PearTree;
-
-
+const PearTree = require('./pear_tree.js');
 
 let mangoTree = new MangoTree(true)
 
@@ -18,12 +14,11 @@ let pearTree = new PearTree(true)
 
 var arrayOfObject = [mangoTree, appleTree, pearTree]
 
+
 for (let i = 0; i < arrayOfObject.length; i++) {
   let currentObject = arrayOfObject[i];
   console.log("Let's Go " + currentObject.name + "!");
   do {
-    // mangoTree.grow();
-
     if (currentObject.grow() !== false) {
       currentObject.harvest();
       console.log(`[Year ${currentObject.age} Report] Height = ${currentObject.height} m | Fruits harvested = ${currentObject.harvested} (${currentObject.good} good, ${currentObject.bad}, bad)`);
