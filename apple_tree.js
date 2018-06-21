@@ -4,19 +4,18 @@ const FruitTree = require('./fruit_tree');
 
 const Fruit = require('./fruit');
 
-class MangoTree extends FruitTree {
-
-  // Initialize a new MangoTree
+// Release 1
+class AppleTree extends FruitTree{
   constructor (healthStatus) {
-    super ();
-    this._name = "Mango";
+    super();
+    this._name = "Apple"
   }
 
   // Grow the tree
   grow () {
     var matureAge = 3;
-    var stopHeightAge = 10;
-    var stopFruitAge = 15;
+    var stopHeightAge = 9;
+    var stopFruitAge = 20;
 
     if (this._age === stopFruitAge - 1) {
       this._healthStatus = false;
@@ -28,19 +27,19 @@ class MangoTree extends FruitTree {
       }
 
       if (this._age <= stopHeightAge ) {
-        this._height = this._height + (Math.trunc(Math.random() * 5));
+        this._height = this._height + (Math.trunc(Math.random() * 6));
       }
     }
 
   }
 
-  // Produce some mangoes
+  // Produce some Apples
   produce () {
-    let additonalAmount = (Math.trunc(Math.random() * 10));
+    let additonalAmount = (Math.trunc(Math.random() * 6));
     let arrOfObjProduced = this._arrOfObj;
 
     for (let i = 0; i < additonalAmount; i++) {
-      let mangoFruit = new Mango();
+      let mangoFruit = new Apple();
       arrOfObjProduced.push(mangoFruit)
     }
 
@@ -49,17 +48,12 @@ class MangoTree extends FruitTree {
 
     return this;
   }
-
-
-
 }
 
-class Mango extends Fruit {
-  // Produce a mango
-  constructor () {
+class Apple extends Fruit {
+  constructor() {
     super();
   }
-
 }
 
-module.exports = MangoTree;
+module.exports = AppleTree;
